@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黄梦辉 · 个人作品集</title>
+  <meta name="description" content="黄梦辉的个人作品集：小程序、Web 应用、数据可视化与 AI 应用项目。">
+  <!-- 防闪烁：在页面渲染前确定主题 -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ 顶部导航 ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#home">梦辉<i>.</i><span>Portfolio</span></a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#home" class="nav__link is-active">首页</a>
+        <a href="#intro" class="nav__link">个人介绍</a>
+        <a href="#works" class="nav__link">项目作品</a>
+        <a href="#about" class="nav__link">关于我</a>
+        <a href="#contact" class="nav__link">联系方式</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换深浅色模式">☾</button>
+        <button class="nav__burger" id="navBurger" aria-label="打开菜单">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 首屏 ============ -->
+    <section class="hero wrap" id="home">
+      <div class="hero__label">
+        <span>Portfolio</span><span>个人作品集</span><span>2026</span>
+      </div>
+      <h1 class="hero__title">
+        <span class="hero__line">在设计与</span>
+        <span class="hero__line"><em>代码</em>之间，</span>
+        <span class="hero__line">构建作品。</span>
+      </h1>
+      <div class="hero__foot">
+        <p class="hero__sub">
+          你好，我是黄梦辉——广州软件学院软件工程专业在读，
+          目前主要关注 AI 辅助开发与大语言模型技术，
+          这里收录了我在校期间完成的项目作品。
+        </p>
+        <ul class="hero__meta">
+          <li><span>学校 / 专业</span>广州软件学院 · 软件工程</li>
+          <li><span>当前方向</span>AI 辅助开发 / 大语言模型应用</li>
+          <li><span>所在城市</span>中国 · 广州</li>
+        </ul>
+      </div>
+      <a class="hero__scroll" href="#works">向下滚动 · 查看作品 <i>↓</i></a>
+    </section>
+
+    <!-- ============ 个人介绍 ============ -->
+    <section class="section wrap" id="intro">
+      <div class="sec-head reveal">
+        <span class="sec-head__num">01</span>
+        <h2 class="sec-head__title">个人介绍</h2>
+        <span class="sec-head__en">Profile</span>
+      </div>
+      <div class="intro__top">
+        <figure class="intro__photo reveal">
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20photo%20of%20a%20young%20chinese%20college%20student%2C%20warm%20natural%20light%2C%20plain%20beige%20studio%20background%2C%20editorial%20magazine%20portrait%20photography&image_size=portrait_4_3"
+               alt="黄梦辉个人照片">
+          <figcaption>黄梦辉 / 广州软件学院</figcaption>
+        </figure>
+        <p class="intro__lead reveal">
+          平时主要使用 <em>Python、Java 和 TypeScript</em> 进行项目开发，
+          也在持续学习前后端开发、数据可视化和 AI 应用构建。
+        </p>
+      </div>
+      <div class="skills reveal">
+        <div class="skill">
+          <h3>编程语言</h3>
+          <ul>
+            <li>Python</li>
+            <li>Java</li>
+            <li>TypeScript</li>
+            <li>HTML / CSS</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>当前方向</h3>
+          <ul>
+            <li>AI 辅助开发</li>
+            <li>大语言模型应用</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>持续学习</h3>
+          <ul>
+            <li>前后端开发</li>
+            <li>数据可视化</li>
+            <li>AI 应用构建</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 项目作品 ============ -->
+    <section class="section wrap" id="works">
+      <div class="sec-head reveal">
+        <span class="sec-head__num">02</span>
+        <h2 class="sec-head__title">项目作品</h2>
+        <span class="sec-head__en">Selected Works</span>
+      </div>
+      <div class="works__filters reveal" id="filters"></div>
+      <div class="works__list" id="worksList"></div>
+      <p class="works__count" id="worksCount"></p>
+    </section>
+
+    <!-- ============ 关于我 ============ -->
+    <section class="section wrap" id="about">
+      <div class="sec-head reveal">
+        <span class="sec-head__num">03</span>
+        <h2 class="sec-head__title">关于我</h2>
+        <span class="sec-head__en">About</span>
+      </div>
+      <div class="about__grid">
+        <figure class="about__media reveal">
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=cozy%20workspace%20desk%20with%20laptop%20notebook%20and%20warm%20lamp%20light%2C%20evening%20atmosphere%2C%20film%20photography%20tones%2C%20editorial%20magazine%20style&image_size=portrait_4_3"
+               alt="我的工作台">
+          <figcaption>我的工作台</figcaption>
+        </figure>
+        <div class="about__text reveal">
+          <p>
+            我叫黄梦辉，是一名软件工程专业学生，
+            目前主要关注 AI 辅助开发与大语言模型技术。
+          </p>
+          <p>
+            平时主要使用 Python、Java 和 TypeScript 进行项目开发，
+            也在持续学习前后端开发、数据可视化和 AI 应用构建。
+          </p>
+          <div class="about__facts">
+            <div class="fact"><span>学校</span><span>广州软件学院 · 在读</span></div>
+            <div class="fact"><span>专业</span><span>软件工程</span></div>
+            <div class="fact"><span>当前方向</span><span>AI 辅助开发 / 大语言模型应用</span></div>
+            <div class="fact"><span>所在城市</span><span>中国 · 广州</span></div>
+            <div class="fact"><span>个人主页</span><span>xiaohuang.dev</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 联系方式 ============ -->
+    <section class="section wrap contact" id="contact">
+      <div class="sec-head reveal">
+        <span class="sec-head__num">04</span>
+        <h2 class="sec-head__title">联系方式</h2>
+        <span class="sec-head__en">Contact</span>
+      </div>
+      <div class="contact__body reveal">
+        <h3 class="contact__title">对我的项目感兴趣？<br>欢迎<em>随时联系</em>。</h3>
+        <a class="contact__email" href="mailto:xiaohuang@example.com">xiaohuang@example.com</a>
+        <ul class="contact__socials">
+          <li><a href="https://github.com/xiaohuang-dev" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href="https://xiaohuang.dev" target="_blank" rel="noopener">个人主页 ↗</a></li>
+          <li><span>微信：xiaohuang</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 页脚 ============ -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <span>© <span id="year">2026</span> 黄梦辉 · 个人作品集</span>
+      <span>手工编写 HTML / CSS / JS</span>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
